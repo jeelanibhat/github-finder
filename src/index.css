@@ -105,6 +105,48 @@ body {
 .cursor {
   cursor: pointer;
 }
+.user__search-wrapper {
+  text-align: center;
+}
+.user__search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 50px 0 0;
+}
+.user__search-form p {
+  display: block;
+  text-align: left;
+  width: 40%;
+  cursor: pointer;
+}
+.user__search-form form {
+  display: flex;
+  align-items: center;
+  width: 40%;
+}
+.user__search-form .MuiInputLabel-animated,
+.user__search-form .MuiFormLabel-root.Mui-focussed,
+.user__search-form .MuiInputBase-input,
+.user__search-form .MuiButton-root {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+.user__search-form .MuiInput-underline {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+}
+.user__search-form .MuiInput-underline:after {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+}
+.user__search-form .MuiButton-outlined {
+  border: 3px solid rgba(255, 255, 255, 0.6);
+}
+.user__search-form .MuiFormControl-root {
+  width: 100%;
+}
+.user__search-form .MuiButton-label {
+  padding: 5px 30px;
+}
 /* media query */
 @media (max-width: 1200px) {
   .user__item-wrapper {
@@ -114,5 +156,8 @@ body {
 @media (max-width: 768px) {
   .user__item-wrapper {
     min-width: 100%;
+  }
+  .user__search-form form {
+    width: 100%;
   }
 }
