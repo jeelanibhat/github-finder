@@ -1,46 +1,47 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import { Button } from "@material-ui/core";
+import GithubContext from "../context/github/GithubContext";
 
 const UserSearch = () => {
-  const [search, setSearch] = useState("");
+  const { searchContext, setSearchContext, clearUsers } =
+    useContext(GithubContext);
+  const [inputText, setInputText] = useState("Jeelani");
 
+  // onchange handler for the search input
   const handleTextFieldChange = (e) => {
-    setSearch(e.target.value);
+    setInputText(e.target.value);
   };
 
+  // submit function
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    if (search === "") {
-      alert("Please enter a search term");
+    if (inputText.length > 0) {
+      setSearchContext(inputText);
     } else {
-      console.log("result :", search);
+      alert("Please enter a valid search term");
     }
-  };
-
-  const clearHandler = () => {
-    setSearch("");
   };
 
   return (
     <div className="user__search-wrapper">
       <h2>Search User</h2>
       <div className="user__search-form">
-        <form onSubmit={(e) => handleSearchSubmit(e)}>
+        <form onClick={(e) => handleSearchSubmit(e)}>
           <TextField
             id="standard-basic"
             label="Search ..."
             variant="standard"
             onChange={(e) => handleTextFieldChange(e)}
-            value={search}
+            value={inputText}
           />
           <Button type="submit" variant="outlined" endIcon={<SearchIcon />}>
             Search
           </Button>
         </form>
-        <p onClick={clearHandler}>Clear</p>
+        <p onClick={clearUsers}>Clear</p>
       </div>
     </div>
   );

@@ -126,6 +126,9 @@ body {
   align-items: center;
   width: 40%;
 }
+.home__wrapper {
+  min-width: 100%;
+}
 .user__search-form .MuiInputLabel-animated,
 .user__search-form .MuiFormLabel-root.Mui-focussed,
 .user__search-form .MuiInputBase-input,
