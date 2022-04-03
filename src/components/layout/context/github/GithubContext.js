@@ -9,6 +9,7 @@ const Github_Token = process.env.REACT_APP_GITHUB_TOKEN;
 export const GithubProvider = ({ children }) => {
   const initialSate = {
     users: [],
+    user: {},
     loading: true,
   };
 
@@ -32,7 +33,6 @@ export const GithubProvider = ({ children }) => {
       }
     );
     const { items } = await response.json();
-    console.log("Git data :", items.length);
 
     if (items.length !== 0) {
       dispatch({
@@ -42,6 +42,22 @@ export const GithubProvider = ({ children }) => {
     } else {
       alert("No users found");
     }
+  };
+
+  // fetch single users
+  const singleGithubUsers = async (login) => {
+    console.log("login - context api :", login);
+    const response = await fetch(`${Github_Url}/users/${login}`, {
+      headers: {
+        Authorization: `token ${Github_Token}`,
+      },
+    });
+
+    const data = await response.json();
+    dispatch({
+      type: "SINGLE_USERS",
+      payload: data,
+    });
   };
 
   // Clear users
@@ -57,11 +73,13 @@ export const GithubProvider = ({ children }) => {
     <GithubContext.Provider
       value={{
         users: state.users,
+        user: state.user,
         loading: state.loading,
         fetchGithubUsers,
         searchContext,
         setSearchContext,
         clearUsers,
+        singleGithubUsers,
       }}
     >
       {children}

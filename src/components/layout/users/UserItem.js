@@ -24,7 +24,7 @@ const UserItem = ({ user: { login, avatar_url, url } }) => {
           <ListItemText
             primary={login}
             secondary="View Profile"
-            onClick={() => navigate(`/${url}`)}
+            onClick={() => navigate(`user/${login}`)}
             className="cursor"
           />
         </ListItem>

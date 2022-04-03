@@ -150,6 +150,32 @@ body {
 .user__search-form .MuiButton-label {
   padding: 5px 30px;
 }
+.single__user-wrapper {
+  width: 80%;
+}
+.back_to_search {
+  text-align: center;
+  padding: 20px 0;
+  position: absolute;
+  top: 75px;
+  left: 107px;
+}
+.back_to_search a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.user__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.user__info-left {
+  margin-right: 50px;
+}
+.user__info-left img {
+  width: 100%;
+}
 /* media query */
 @media (max-width: 1200px) {
   .user__item-wrapper {
@@ -162,5 +188,16 @@ body {
   }
   .user__search-form form {
     width: 100%;
+  }
+  .user__info {
+    flex-direction: column;
+  }
+  .back_to_search {
+    text-align: center;
+    padding: 20px 0;
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
